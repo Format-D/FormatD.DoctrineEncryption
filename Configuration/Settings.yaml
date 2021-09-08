@@ -1,0 +1,34 @@
+
+Neos:
+  Flow:
+    persistence:
+      doctrine:
+        dbal:
+          mappingTypes:
+            text_encrypted:
+              dbType: text_encrypted
+              className: FormatD\DoctrineEncryption\Persistence\Doctrine\DataTypes\TextEncryptedType
+            array_encrypted:
+              dbType: array_encrypted
+              className: FormatD\DoctrineEncryption\Persistence\Doctrine\DataTypes\ArrayEncryptedType
+        eventListeners:
+          FormatD\DoctrineEncryption\Persistence\Doctrine\EventListener\EncryptionEventListener:
+            events:
+              - onFlush
+              - postLoad
+            listener: FormatD\DoctrineEncryption\Persistence\Doctrine\EventListener\EncryptionEventListener
+
+
+FormatD:
+  DoctrineEncryption:
+    secretKey: '<PleaseSetYourSecretKey>'
+    entities:
+#      My\Package\Domain\Model\SomeUser:
+#        name.firstName:
+#          method: default
+#        name.lastName:
+#          method: default
+#        name.fullName:
+#          method: default
+#        primaryElectronicAddress.identifier:
+#          method: default
